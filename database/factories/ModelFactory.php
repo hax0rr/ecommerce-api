@@ -1,5 +1,5 @@
 <?php
-
+use App\Model\Product;
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -20,5 +20,24 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
+    ];
+});
+
+$factory->define(App\Model\Product::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+        'price' => $faker->numberBetween(100,2000),
+        'stock' => $faker->randomDigit
+    ];
+});
+
+$factory->define(App\Model\Review::class, function (Faker\Generator $faker) {
+    return [
+        'product_id' => function(){
+            return Product::all()->random();
+        },
+        'customer' => $faker->name,
+        'review' => $faker->paragraph
+
     ];
 });
