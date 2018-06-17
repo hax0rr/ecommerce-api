@@ -17,7 +17,10 @@ class ProductResource extends Resource
         return [
           'name' => $this->name,
            'price' => $this->price,
-           'stock' => $this->stock
+           'stock' => $this->stock==0 ? 'Out of Stock' : $this->stock,
+            'href' => [
+                'reviews' => route('reviews.index', $this->id)
+            ]
         ];
     }
 }
