@@ -22,5 +22,5 @@ class ProductResource extends Resource
                 'reviews' => route('reviews.index', $this->id)
             ]
         ];
-    }
+    } 
 }
