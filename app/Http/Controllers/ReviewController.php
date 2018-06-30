@@ -11,4 +11,5 @@ class ReviewController extends Controller
         
         return ReviewResource::collection($product->reviews);
     }
+    
 }
