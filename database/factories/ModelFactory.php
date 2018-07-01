@@ -18,7 +18,10 @@ $factory->define(App\Model\Product::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->word,
         'price' => $faker->numberBetween(100,2000),
-        'stock' => $faker->randomDigit
+        'stock' => $faker->randomDigit,
+        'user_id' => function(){
+            return App\User::all()->random();
+        }
     ];
 });
 
