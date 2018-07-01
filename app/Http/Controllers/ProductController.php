@@ -34,9 +34,11 @@ class ProductController extends Controller
             'data' => new ProductResource($product)
         ], Response::HTTP_CREATED);
     }
+    
     public function middlewear(){
         
     }
+    
     public function update(Request $request, Product $product){
         return $this->ProductUserCheck($product);
         $product->update($request->all());
@@ -44,6 +46,7 @@ class ProductController extends Controller
             'data' => new ProductResource($product)
         ], Response::HTTP_CREATED);
     }
+    
     public function destroy(Product $product){
         $this->ProductUserCheck($product);
         $product->delete();
